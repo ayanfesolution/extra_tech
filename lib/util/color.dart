@@ -1,13 +1,12 @@
-
 import 'package:flutter/material.dart';
 
 const kPRYCOLOUR = Color(0xFF604ADB);
-const kSECCOLOUR = Color(0xFFF4F7FF);
+const kSECCOLOUR = Color(0xFF050247);
 
-//const kAppBlueColor = Color(0xFF1B5F96);
 const kBLKCOLOUR = Color(0xff191919);
 const kWHTCOLOUR = Color(0xFFFFFFFF);
-const Color kBLKLIGHTColor = Color(0xFF9FA2AB);
+const kTextColor = Color(0xFF1E1E1E);
+const Color kBGColor = Color(0xFFB6B6B6);
 const Color kBLKLIGHTDeepColor = Color(0xFF828282);
 const kREDCOLOUR = Color(0xFFE92022);
 const kREDLIGHTCOLOUR = Color(0xFFFFE8EA);
