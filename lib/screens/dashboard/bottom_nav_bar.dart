@@ -1,4 +1,8 @@
 import 'package:auto_adjust/auto_adjust.dart';
+import 'package:extra_tech/screens/dashboard/favourite/favourite_screen.dart';
+import 'package:extra_tech/screens/dashboard/home/home_screen.dart';
+import 'package:extra_tech/screens/dashboard/search/search_screen.dart';
+import 'package:extra_tech/screens/dashboard/settings/settings_screen.dart';
 import 'package:extra_tech/util/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -16,8 +20,14 @@ class _BottomNavBarState extends ConsumerState<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     var currentIndex = useState(0);
-    List<Widget> pages = [];
+    List<Widget> pages = [
+      const HomeScreen(),
+      const SearchScreen(),
+      const FavouriteScreen(),
+      const SettingsScreen(),
+    ];
     return Scaffold(
+      body: pages[currentIndex.value],
       bottomNavigationBar: SizedBox(
         height: autoAdjustHeight(78),
         width: double.maxFinite,

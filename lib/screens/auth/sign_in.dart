@@ -10,10 +10,12 @@ import 'package:extra_tech/util/navigations.dart';
 import 'package:extra_tech/util/validators.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:local_auth/local_auth.dart';
 
 import 'forget_password.dart';
 
@@ -27,6 +29,7 @@ class SignInScreen extends StatefulHookConsumerWidget {
 class _SignInScreenState extends ConsumerState<SignInScreen> {
   final formKey = GlobalKey<FormState>();
   late LongPressGestureRecognizer longPressRecognizer;
+  final LocalAuthentication auth = LocalAuthentication();
 
   @override
   void initState() {
@@ -41,6 +44,30 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
   void dispose() {
     longPressRecognizer.dispose();
     super.dispose();
+  }
+
+  checkAuthentication() async {
+    // ···
+    final bool canAuthenticateWithBiometrics = await auth.canCheckBiometrics;
+    final bool canAuthenticate =
+        canAuthenticateWithBiometrics || await auth.isDeviceSupported();
+
+    if (canAuthenticate) {
+      try {
+        final bool didAuthenticate = await auth.authenticate(
+            localizedReason: 'Please authenticate to show account balance');
+        if (didAuthenticate) {
+          if (mounted) {
+            RouteNavigators.routeNoWayHome(
+              context,
+              const BottomNavBar(),
+            );
+          }
+        }
+      } on PlatformException {
+        // ...
+      }
+    }
   }
 
   @override
@@ -190,7 +217,9 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                 ),
                 Gap(autoAdjustHeight(25)),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    checkAuthentication();
+                  },
                   child: Container(
                     height: autoAdjustHeight(50),
                     width: double.maxFinite,
