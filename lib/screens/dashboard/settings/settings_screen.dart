@@ -230,17 +230,21 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                       );
                     },
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         SvgPicture.asset(
                             'assets/svgs/more-horizontal-circle-svgrepo-com2.svg'),
                         Gap(autoAdjustWidth(20)),
-                        Text(
-                          'More',
-                          style: kCustomTextStyle(
-                            fontWeight: FontWeight.w700,
-                            size: 14,
+                        Expanded(
+                          child: Text(
+                            'More',
+                            style: kCustomTextStyle(
+                              fontWeight: FontWeight.w700,
+                              size: 14,
+                            ),
                           ),
-                        )
+                        ),
+                        SvgPicture.asset('assets/svgs/arrow-back-sim6.svg'),
                       ],
                     ),
                   ),
