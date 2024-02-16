@@ -1,4 +1,7 @@
+import 'package:extra_tech/screens/dashboard/settings/more/about.dart';
+import 'package:extra_tech/screens/dashboard/settings/more/faq.dart';
 import 'package:extra_tech/screens/dashboard/settings/more/help_and_support.dart';
+import 'package:extra_tech/screens/dashboard/settings/more/terms.dart';
 import 'package:extra_tech/screens/dashboard/settings/settings_screen.dart';
 import 'package:extra_tech/util/navigations.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +37,7 @@ class _MoreScreenState extends ConsumerState<MoreScreen> {
               children: [
                 ListTile(
                   leading: SvgPicture.asset(
-                    'assets/svgs/Change_password.svg',
+                    'assets/svgs/help-circle-svgrepo-com1.svg',
                   ),
                   title: Text(
                     'Help and Support',
@@ -52,6 +55,65 @@ class _MoreScreenState extends ConsumerState<MoreScreen> {
                   },
                 ),
                 Divider(),
+                ListTile(
+                  leading: SvgPicture.asset(
+                    'assets/svgs/caveat-f-svgrepo-com2.svg',
+                  ),
+                  title: Text(
+                    'Frequently Asked Question',
+                    style: kCustomTextStyle(
+                      fontWeight: FontWeight.w300,
+                      size: 12,
+                    ),
+                  ),
+                  trailing: SvgPicture.asset('assets/svgs/arrow-back-sim6.svg'),
+                  onTap: () {
+                    RouteNavigators.route(
+                      context,
+                      const FAQ(),
+                    );
+                  },
+                ),
+                Divider(),
+                ListTile(
+                  leading: SvgPicture.asset(
+                    'assets/svgs/assignments-svgrepo-com1.svg',
+                  ),
+                  title: Text(
+                    'Terms of Use',
+                    style: kCustomTextStyle(
+                      fontWeight: FontWeight.w300,
+                      size: 12,
+                    ),
+                  ),
+                  trailing: SvgPicture.asset('assets/svgs/arrow-back-sim6.svg'),
+                  onTap: () {
+                    RouteNavigators.route(
+                      context,
+                      const TermsPage(),
+                    );
+                  },
+                ),
+                Divider(),
+                ListTile(
+                  leading: SvgPicture.asset(
+                    'assets/svgs/caveat-f-svgrepo-com2.svg',
+                  ),
+                  title: Text(
+                    'About ExtraTech',
+                    style: kCustomTextStyle(
+                      fontWeight: FontWeight.w300,
+                      size: 12,
+                    ),
+                  ),
+                  trailing: SvgPicture.asset('assets/svgs/arrow-back-sim6.svg'),
+                  onTap: () {
+                    RouteNavigators.route(
+                      context,
+                      const AboutScreen(),
+                    );
+                  },
+                ),
               ],
             ),
           ),
