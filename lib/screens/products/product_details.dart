@@ -11,6 +11,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../route/route.dart';
+import '../vendors/vendor_screen.dart';
 import 'all_review.dart';
 
 class ProductDetailsScreen extends StatefulHookConsumerWidget {
@@ -130,53 +132,61 @@ class _ProductDetailsScreenState extends ConsumerState<ProductDetailsScreen> {
                     ],
                   ),
                   Gap(autoAdjustWidth(30)),
-                  BackgroundCornerDesign(
-                    child: Row(
-                      children: [
-                        SizedBox(
-                          height: autoAdjustHeight(54),
-                          width: autoAdjustWidth(60),
-                          child:
-                              Image.asset('assets/images/totalenergies1.png'),
-                        ),
-                        Gap(autoAdjustWidth(19)),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'TotalEnergies Store',
-                                style: kCustomTextStyle(
-                                  size: 16,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                              Text(
-                                'View store',
-                                style: kCustomTextStyle(
-                                  size: 12,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              )
-                            ],
+                  GestureDetector(
+                    onTap: () {
+                      RouteNavigators.route(
+                        context,
+                        const VendorScreen(),
+                      );
+                    },
+                    child: BackgroundCornerDesign(
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            height: autoAdjustHeight(54),
+                            width: autoAdjustWidth(60),
+                            child:
+                                Image.asset('assets/images/totalenergies1.png'),
                           ),
-                        ),
-                        Padded(
-                          child: Container(
-                            height: autoAdjustHeight(32),
-                            width: autoAdjustWidth(32),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(
-                                autoAdjustHeight(8),
-                              ),
-                            ),
-                            child: const Icon(
-                              Icons.arrow_forward_ios_outlined,
+                          Gap(autoAdjustWidth(19)),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'TotalEnergies Store',
+                                  style: kCustomTextStyle(
+                                    size: 16,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                                Text(
+                                  'View store',
+                                  style: kCustomTextStyle(
+                                    size: 12,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                )
+                              ],
                             ),
                           ),
-                        )
-                      ],
+                          Padded(
+                            child: Container(
+                              height: autoAdjustHeight(32),
+                              width: autoAdjustWidth(32),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(
+                                  autoAdjustHeight(8),
+                                ),
+                              ),
+                              child: const Icon(
+                                Icons.arrow_forward_ios_outlined,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                   Gap(autoAdjustHeight(28)),
@@ -254,7 +264,12 @@ class _ProductDetailsScreenState extends ConsumerState<ProductDetailsScreen> {
                               child: ExtraTechMainButton(
                                 cornerRadius: autoAdjustHeight(10),
                                 text: 'Get the Route',
-                                onTap: () {},
+                                onTap: () {
+                                  RouteNavigators.route(
+                                    context,
+                                    const RouteScreen(),
+                                  );
+                                },
                               ),
                             )
                           ],
@@ -284,20 +299,21 @@ class _ProductDetailsScreenState extends ConsumerState<ProductDetailsScreen> {
                                 children: [
                                   Text.rich(
                                     TextSpan(
-                                        text: '3.9',
-                                        style: kCustomTextStyle(
-                                          size: 24,
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                        children: [
-                                          TextSpan(
-                                            text: '/5',
-                                            style: kCustomTextStyle(
-                                              size: 12,
-                                              fontWeight: FontWeight.w700,
-                                            ),
+                                      text: '3.9',
+                                      style: kCustomTextStyle(
+                                        size: 24,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                      children: [
+                                        TextSpan(
+                                          text: '/5',
+                                          style: kCustomTextStyle(
+                                            size: 12,
+                                            fontWeight: FontWeight.w700,
                                           ),
-                                        ]),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                   Text(
                                     'Based on 120 Reviews',

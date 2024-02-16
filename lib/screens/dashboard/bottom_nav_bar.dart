@@ -10,7 +10,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class BottomNavBar extends StatefulHookConsumerWidget {
-  const BottomNavBar({super.key});
+  const BottomNavBar({super.key, this.currentIndex = 0});
+  final int currentIndex;
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _BottomNavBarState();
@@ -19,11 +20,11 @@ class BottomNavBar extends StatefulHookConsumerWidget {
 class _BottomNavBarState extends ConsumerState<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
-    var currentIndex = useState(0);
+    var currentIndex = useState(widget.currentIndex);
     List<Widget> pages = [
       const HomeScreen(),
       const SearchScreen(),
-      const FavouriteScreen(),
+      const FavoriteScreen(),
       const SettingsScreen(),
     ];
     return Scaffold(

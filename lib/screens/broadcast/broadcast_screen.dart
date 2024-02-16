@@ -3,6 +3,7 @@ import 'package:extra_tech/util/components/padded.dart';
 import 'package:extra_tech/util/constant.dart';
 import 'package:extra_tech/util/navigations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -18,6 +19,7 @@ class BroadcastFullScreen extends StatefulHookConsumerWidget {
 class _BroadcastFullScreenState extends ConsumerState<BroadcastFullScreen> {
   @override
   Widget build(BuildContext context) {
+    var isTheSubscriptionEnable = useState(false);
     return Scaffold(
       body: Padded(
         child: Column(
@@ -212,8 +214,10 @@ class _BroadcastFullScreenState extends ConsumerState<BroadcastFullScreen> {
                           ),
                         ),
                         Switch(
-                          value: true,
-                          onChanged: (value) {},
+                          value: isTheSubscriptionEnable.value,
+                          onChanged: (value) {
+                            isTheSubscriptionEnable.value = value;
+                          },
                         )
                       ],
                     ),
