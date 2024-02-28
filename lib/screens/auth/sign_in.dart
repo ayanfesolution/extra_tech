@@ -2,6 +2,7 @@ import 'package:auto_adjust/auto_adjust.dart';
 import 'package:extra_tech/screens/auth/sign_up.dart';
 import 'package:extra_tech/screens/dashboard/bottom_nav_bar.dart';
 import 'package:extra_tech/screens/onboarding/onboarding_screen.dart';
+import 'package:extra_tech/screens/seller_side/seller_bottom_nav_bar.dart';
 import 'package:extra_tech/util/color.dart';
 import 'package:extra_tech/util/components/main_button.dart';
 import 'package:extra_tech/util/components/padded.dart';
@@ -60,7 +61,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
           if (mounted) {
             RouteNavigators.routeNoWayHome(
               context,
-              const BottomNavBar(),
+              const SellerBottomNavBar(),
             );
           }
         }

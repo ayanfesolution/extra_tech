@@ -11,6 +11,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'more/more_screen.dart';
 import 'notification/notification.dart';
 import 'password_management/password_management.dart';
+import 'profile/profile_screen.dart';
 import 'security/security_question.dart';
 
 class SettingsScreen extends StatefulHookConsumerWidget {
@@ -36,7 +37,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
       body: Padded(
         child: Column(
           children: [
-            Divider(),
+            const Divider(),
             Gap(autoAdjustHeight(25)),
             Expanded(
               child: ListView(
@@ -45,7 +46,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                   Row(
                     children: [
                       SvgPicture.asset(
-                          'assets/svgs/user-edit-svgrepo-com 1.svg'),
+                        'assets/svgs/user-edit-svgrepo-com 1.svg',
+                      ),
                       Gap(autoAdjustWidth(20)),
                       Text(
                         'Profile',
@@ -57,48 +59,56 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                     ],
                   ),
                   Gap(autoAdjustHeight(11)),
-                  PackageContainer(
-                    child: Row(
-                      children: [
-                        CircleAvatar(
-                          maxRadius: autoAdjustHeight(20),
-                          child: Image.asset(
-                            'assets/images/Group19.png',
-                            fit: BoxFit.fill,
+                  GestureDetector(
+                    onTap: () => RouteNavigators.route(
+                      context,
+                      const ProfileScreenPage(),
+                    ),
+                    child: PackageContainer(
+                      child: Row(
+                        children: [
+                          CircleAvatar(
+                            maxRadius: autoAdjustHeight(20),
+                            child: Image.asset(
+                              'assets/images/Group19.png',
+                              fit: BoxFit.fill,
+                            ),
                           ),
-                        ),
-                        Gap(autoAdjustWidth(11)),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Raphael Mobbin',
-                                style: kCustomTextStyle(
-                                  size: 12,
-                                  fontWeight: FontWeight.w700,
+                          Gap(autoAdjustWidth(11)),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Raphael Mobbin',
+                                  style: kCustomTextStyle(
+                                    size: 12,
+                                    fontWeight: FontWeight.w700,
+                                  ),
                                 ),
-                              ),
-                              Text(
-                                'raphaelmobbin@gmail.com',
-                                style: kCustomTextStyle(
-                                  size: 11,
-                                  fontWeight: FontWeight.w400,
-                                  color: Color(0xFF7D7D7D),
+                                Text(
+                                  'raphaelmobbin@gmail.com',
+                                  style: kCustomTextStyle(
+                                    size: 11,
+                                    fontWeight: FontWeight.w400,
+                                    color: const Color(0xFF7D7D7D),
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                        SvgPicture.asset('assets/svgs/arrow-back-sim6.svg')
-                      ],
+                          SvgPicture.asset('assets/svgs/arrow-back-sim6.svg')
+                        ],
+                      ),
+                    
                     ),
                   ),
                   Gap(autoAdjustHeight(11)),
                   Row(
                     children: [
                       SvgPicture.asset(
-                          'assets/svgs/user-edit-svgrepo-com 1.svg'),
+                        'assets/svgs/user-edit-svgrepo-com 1.svg',
+                      ),
                       Gap(autoAdjustWidth(20)),
                       Text(
                         'Preferences',
@@ -196,7 +206,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                             );
                           },
                         ),
-                        Divider(),
+                        const Divider(),
                         ListTile(
                           leading: SvgPicture.asset(
                             'assets/svgs/security_question.svg',
@@ -272,7 +282,7 @@ class PackageContainer extends StatelessWidget {
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
-            color: Color(0xFFC7C7C7).withOpacity(0.37),
+            color: const Color(0xFFC7C7C7).withOpacity(0.37),
             blurStyle: BlurStyle.normal,
             spreadRadius: 0,
             blurRadius: autoAdjustHeight(2),

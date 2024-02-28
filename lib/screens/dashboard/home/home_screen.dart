@@ -1,4 +1,9 @@
 import 'package:auto_adjust/auto_adjust.dart';
+import 'package:extra_tech/screens/auth/sign_in.dart';
+import 'package:extra_tech/screens/dashboard/favourite/favourite_screen.dart';
+import 'package:extra_tech/screens/dashboard/settings/notification/notification.dart';
+import 'package:extra_tech/screens/dashboard/settings/profile/profile_screen.dart';
+import 'package:extra_tech/screens/dashboard/settings/settings_screen.dart';
 import 'package:extra_tech/util/color.dart';
 import 'package:extra_tech/util/components/padded.dart';
 import 'package:extra_tech/util/constant.dart';
@@ -29,14 +34,153 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
+        backgroundColor: kWHTCOLOUR,
         drawer: Drawer(
-            child: SizedBox(
-          width: autoAdjustWidth(250),
-          height: double.maxFinite,
-        )),
-
-        // drawerEnableOpenDragGesture: false,
-        //onDrawerChanged: (isOpened) {},
+          backgroundColor: kWHTCOLOUR,
+          // width: autoAdjustWidth(300),
+          child: Padded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Gap(autoAdjustHeight(75)),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CircleAvatar(
+                      maxRadius: autoAdjustHeight(20),
+                      child: Image.asset(
+                        'assets/images/Group19.png',
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                    Gap(autoAdjustWidth(11)),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Raphael Mobbin',
+                          style: kCustomTextStyle(
+                            size: 12,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        Text(
+                          'Distributor',
+                          style: kCustomTextStyle(
+                            size: 11,
+                            fontWeight: FontWeight.w400,
+                            color: const Color(0xFF7D7D7D),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                Gap(autoAdjustHeight(8)),
+                const Divider(),
+                Gap(autoAdjustHeight(45)),
+                ListTile(
+                  leading: SvgPicture.asset(
+                      'assets/svgs/user-edit-svgrepo-com 1.svg'),
+                  title: Text(
+                    'Profile',
+                    style: kCustomTextStyle(
+                      fontWeight: FontWeight.w700,
+                      size: 16,
+                    ),
+                  ),
+                  onTap: () {
+                    RouteNavigators.route(
+                      context,
+                      const ProfileScreenPage(),
+                    );
+                  },
+                ),
+                ListTile(
+                  leading: SvgPicture.asset(
+                    'assets/svgs/setting-bell-notification-.svg',
+                  ),
+                  title: Text(
+                    'Notifications',
+                    style: kCustomTextStyle(
+                      fontWeight: FontWeight.w700,
+                      size: 16,
+                    ),
+                  ),
+                  onTap: () {
+                    RouteNavigators.route(
+                      context,
+                      const NotificationScreen(),
+                    );
+                  },
+                ),
+                ListTile(
+                  leading:
+                      SvgPicture.asset('assets/svgs/favorite-chart-svgrep.svg'),
+                  title: Text(
+                    'Favorites',
+                    style: kCustomTextStyle(
+                      fontWeight: FontWeight.w700,
+                      size: 16,
+                    ),
+                  ),
+                  onTap: () {
+                    RouteNavigators.route(
+                      context,
+                      const FavoriteScreen(),
+                    );
+                  },
+                ),
+                ListTile(
+                  leading:
+                      SvgPicture.asset('assets/svgs/private-lock-icon4.svg'),
+                  title: Text(
+                    'Settings',
+                    style: kCustomTextStyle(
+                      fontWeight: FontWeight.w700,
+                      size: 16,
+                    ),
+                  ),
+                  onTap: () {
+                    RouteNavigators.route(
+                      context,
+                      const SettingsScreen(),
+                    );
+                  },
+                ),
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        const Divider(),
+                        ListTile(
+                          leading: SvgPicture.asset(
+                            'assets/svgs/logout-svgrepo-com.svg',
+                          ),
+                          title: Text(
+                            'Logout',
+                            style: kCustomTextStyle(
+                              fontWeight: FontWeight.w700,
+                              size: 16,
+                            ),
+                          ),
+                          onTap: () {
+                            RouteNavigators.routeNoWayHome(
+                              context,
+                              const SignInScreen(),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
         body: Padded(
           child: Column(
             children: [

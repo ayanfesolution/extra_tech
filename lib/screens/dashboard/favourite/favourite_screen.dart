@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../search/search_screen.dart';
+
 class FavoriteScreen extends StatefulHookConsumerWidget {
   const FavoriteScreen({super.key});
 
@@ -28,33 +30,49 @@ class _FavoriteScreenState extends ConsumerState<FavoriteScreen> {
       body: Padded(
         child: Column(
           children: [
-            Column(
-              children: [
-                Gap(autoAdjustHeight(45)),
-                SizedBox(
-                  height: autoAdjustHeight(355),
-                  width: autoAdjustWidth(310),
-                  child: Image.asset('assets/images/favourite_products.png'),
-                ),
-                Text(
-                  'Favorite Products',
-                  style: kCustomTextStyle(
-                    size: 16,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-                Gap(autoAdjustHeight(5)),
-                Center(
-                  child: Text(
-                    'No Products Found',
-                    style: kCustomTextStyle(
-                      size: 14,
-                      fontWeight: FontWeight.w300,
+            Expanded(
+              child: ListView.builder(
+                padding: EdgeInsets.zero,
+                itemCount: 4,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: EdgeInsets.symmetric(
+                      vertical: autoAdjustHeight(11),
                     ),
-                  ),
-                ),
-              ],
+                    child: const SingleProductDesign(
+                      isMoreVisible: false,
+                    ),
+                  );
+                },
+              ),
             ),
+            // Column(
+            //   children: [
+            //     Gap(autoAdjustHeight(45)),
+            //     SizedBox(
+            //       height: autoAdjustHeight(355),
+            //       width: autoAdjustWidth(310),
+            //       child: Image.asset('assets/images/favourite_products.png'),
+            //     ),
+            //     Text(
+            //       'Favorite Products',
+            //       style: kCustomTextStyle(
+            //         size: 16,
+            //         fontWeight: FontWeight.w700,
+            //       ),
+            //     ),
+            //     Gap(autoAdjustHeight(5)),
+            //     Center(
+            //       child: Text(
+            //         'No Products Found',
+            //         style: kCustomTextStyle(
+            //           size: 14,
+            //           fontWeight: FontWeight.w300,
+            //         ),
+            //       ),
+            //     ),
+            //   ],
+            // ),
           ],
         ),
       ),
