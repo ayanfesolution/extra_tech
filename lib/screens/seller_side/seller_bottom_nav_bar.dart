@@ -1,6 +1,7 @@
 import 'package:auto_adjust/auto_adjust.dart';
 import 'package:extra_tech/util/color.dart';
 import 'package:extra_tech/util/constant.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -25,16 +26,24 @@ class _SellerBottomNavBarState extends ConsumerState<SellerBottomNavBar> {
   Widget build(BuildContext context) {
     var currentIndex = useState(widget.currentIndex);
     return Scaffold(
-      body: Column(
+      body: Stack(
         children: [
-          Container(
-            height: autoAdjustHeight(336),
-            width: autoAdjustWidth(266),
-            decoration: BoxDecoration(
+          Align(
+            alignment: Alignment.topRight,
+            child: Container(
+              height: autoAdjustHeight(185),
+              width: autoAdjustWidth(266),
+              decoration: const BoxDecoration(
                 image: DecorationImage(
-              image: AssetImage('assetName'),
-            )),
-          )
+                  image: AssetImage(
+                    'assets/images/Ellipseyh23.png',
+                  ),
+                  fit: BoxFit.fill,
+                ),
+              ),
+            ),
+          ),
+          
         ],
       ),
       bottomNavigationBar: SizedBox(
