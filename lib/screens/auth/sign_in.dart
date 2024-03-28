@@ -61,7 +61,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
           if (mounted) {
             RouteNavigators.routeNoWayHome(
               context,
-              const SellerBottomNavBar(),
+              const BottomNavBar(),
             );
           }
         }

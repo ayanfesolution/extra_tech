@@ -1,13 +1,19 @@
 import 'package:auto_adjust/auto_adjust.dart';
+import 'package:extra_tech/screens/seller_side/dashboard/sellers_dashboard.dart';
 import 'package:extra_tech/util/color.dart';
 import 'package:extra_tech/util/constant.dart';
+import 'package:extra_tech/util/navigations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+import 'Profile/profile_dart.dart';
+import 'product/upload_product.dart';
 
 class SellerBottomNavBar extends StatefulHookConsumerWidget {
   const SellerBottomNavBar({
@@ -25,27 +31,13 @@ class _SellerBottomNavBarState extends ConsumerState<SellerBottomNavBar> {
   @override
   Widget build(BuildContext context) {
     var currentIndex = useState(widget.currentIndex);
+    List<Widget> pages = [
+      const SellerDashboard(),
+      const ProfileSellerScreen(),
+    ];
+
     return Scaffold(
-      body: Stack(
-        children: [
-          Align(
-            alignment: Alignment.topRight,
-            child: Container(
-              height: autoAdjustHeight(185),
-              width: autoAdjustWidth(266),
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(
-                    'assets/images/Ellipseyh23.png',
-                  ),
-                  fit: BoxFit.fill,
-                ),
-              ),
-            ),
-          ),
-          
-        ],
-      ),
+      body: pages[currentIndex.value],
       bottomNavigationBar: SizedBox(
         height: autoAdjustHeight(72),
         width: double.maxFinite,
@@ -78,9 +70,9 @@ class _SellerBottomNavBarState extends ConsumerState<SellerBottomNavBar> {
                     ),
                     NavBarButton(
                       imagePath: 'assets/svgs/setting-2-svgrepo-com 7.svg',
-                      isItActive: currentIndex.value == 3,
+                      isItActive: currentIndex.value == 1,
                       onTap: () {
-                        currentIndex.value = 3;
+                        currentIndex.value = 1;
                       },
                       title: 'Profile',
                     ),
@@ -89,7 +81,15 @@ class _SellerBottomNavBarState extends ConsumerState<SellerBottomNavBar> {
               ),
               Align(
                 alignment: Alignment.topCenter,
-                child: SvgPicture.asset('assets/svgs/sellerplyus.svg'),
+                child: InkWell(
+                  onTap: () {
+                    RouteNavigators.route(
+                      context,
+                      const UploadProductScreen(),
+                    );
+                  },
+                  child: SvgPicture.asset('assets/svgs/sellerplyus.svg'),
+                ),
               ),
             ],
           ),
